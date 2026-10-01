@@ -1,0 +1,14 @@
+loaded 400 scenarios from cache
+epoch   0  val MSE(z) 0.0557  RMSE 5.422 degC
+epoch  10  val MSE(z) 0.0335  RMSE 4.206 degC
+epoch  20  val MSE(z) 0.0377  RMSE 4.459 degC
+epoch  30  val MSE(z) 0.0364  RMSE 4.381 degC
+epoch  40  val MSE(z) 0.0329  RMSE 4.169 degC
+epoch  50  val MSE(z) 0.0293  RMSE 3.935 degC
+epoch  60  val MSE(z) 0.0355  RMSE 4.328 degC
+epoch  70  val MSE(z) 0.0353  RMSE 4.315 degC
+epoch  80  val MSE(z) 0.0350  RMSE 4.296 degC
+epoch  90  val MSE(z) 0.0286  RMSE 3.883 degC
+
+val RMSE: 3.702 degC | windows: 49180 train / 7280 val | train time 4902 s
+horizon rollout: twin 2.1 ms vs surrogate 0.27 ms -> speedup x8

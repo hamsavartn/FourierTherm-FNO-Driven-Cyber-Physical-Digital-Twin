@@ -1,0 +1,6 @@
+{
+  "long_horizon_stable": true,
+  "max_horizon_temp": 88.5,
+  "dry_out_ood_rmse": 1.45,
+  "note": "MPNO spectral constraints prevent divergence. FC-PINO provides strong OOD physics consistency."
+}

@@ -1,0 +1,18 @@
+static cap: 159.8 kW total EV | 35 stations
+2019-10-15 no_control     viol=219 E=  6942.8 kWh compl=0.67 jain=0.464 maxT=113.0
+2019-10-16 no_control     viol=209 E=  7138.6 kWh compl=0.62 jain=0.453 maxT=125.4
+2019-10-17 no_control     viol=267 E=  8257.6 kWh compl=0.57 jain=0.497 maxT=120.6
+2019-10-18 no_control     viol=292 E= 10340.4 kWh compl=0.52 jain=0.402 maxT=132.7
+2019-10-19 no_control     viol=  0 E=   160.0 kWh compl=1.00 jain=1.000 maxT=85.9
+2019-10-15 static_cap     viol=  0 E=  2603.8 kWh compl=0.19 jain=0.738 maxT=80.9
+2019-10-16 static_cap     viol=  0 E=  2793.3 kWh compl=0.24 jain=0.785 maxT=81.8
+2019-10-17 static_cap     viol=  0 E=  2537.3 kWh compl=0.14 jain=0.830 maxT=81.9
+2019-10-18 static_cap     viol=  0 E=  3719.2 kWh compl=0.08 jain=0.267 maxT=82.4
+2019-10-19 static_cap     viol=  0 E=   160.0 kWh compl=1.00 jain=1.000 maxT=84.4
+2019-10-15 shield         viol=  0 E=  6942.8 kWh compl=0.43 jain=0.464 maxT=88.1
+2019-10-16 shield         viol=  0 E=  7138.6 kWh compl=0.33 jain=0.453 maxT=88.2
+2019-10-17 shield         viol=  0 E=  8190.0 kWh compl=0.29 jain=0.505 maxT=88.2
+2019-10-18 shield         viol=  0 E= 10183.9 kWh compl=0.20 jain=0.420 maxT=88.1
+2019-10-19 shield         viol=  0 E=   160.0 kWh compl=1.00 jain=1.000 maxT=85.7
+
+wrote outputs/phase_summary_real.csv (15 rows)

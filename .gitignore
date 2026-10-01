@@ -1,0 +1,60 @@
+# Node
+node_modules/
+.next/
+dist/
+build/
+npm-debug.log*
+
+# Python
+.venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Environment
+.env
+.env.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Project specific
+.agents/
+
+# Data & Output Files
+outputs/*.parquet
+outputs/*.csv
+outputs/*.npz
+outputs/*.pt
+*.zip
+acndata_sessions*.json
+
+# Scratch Files
+extract*.py
+extracted*.txt
+
+# Agent & Logs
+.playwright-mcp/
+.zcode/
+.zcodeignore
+PLAN.md
+VERIFICATION.md
+frontend/AGENTS.md
+frontend/CLAUDE.md
+
+# Reference Docs
+ht-cable.pdf
+docs/github_scan.md
+docs/patent_search/

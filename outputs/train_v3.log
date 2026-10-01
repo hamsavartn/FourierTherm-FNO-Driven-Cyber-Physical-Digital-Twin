@@ -1,0 +1,16 @@
+loaded 120 scenarios from cache
+Traceback (most recent call last):
+  File "C:\Users\ASUS\Desktop\ML_Project\scripts\04_train_surrogate.py", line 74, in <module>
+    main()
+  File "C:\Users\ASUS\Desktop\ML_Project\scripts\04_train_surrogate.py", line 50, in main
+    res = train(arrays, epochs=args.epochs, seed=args.seed,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\ML_Project\scripts\..\src\dtr\surrogate\train.py", line 127, in train
+    ds_tr = WindowDataset(arrays, ids[:n_tr], base_params=base_params,
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\ML_Project\scripts\..\src\dtr\surrogate\train.py", line 88, in __init__
+    self.y = torch.from_numpy(np.stack(ys))
+                              ^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\ML_Project\.venv\Lib\site-packages\numpy\_core\shape_base.py", line 458, in stack
+    raise ValueError('all input arrays must have the same shape')
+ValueError: all input arrays must have the same shape

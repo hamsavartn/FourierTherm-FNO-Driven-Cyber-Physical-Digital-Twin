@@ -1,0 +1,9 @@
+generated 400 scenarios in 38 s (dry-out share: 20%)
+epoch   0  val MSE(z) 0.0899  RMSE 6.887 degC
+epoch  10  val MSE(z) 0.0362  RMSE 4.372 degC
+epoch  20  val MSE(z) 0.0350  RMSE 4.295 degC
+epoch  30  val MSE(z) 0.0412  RMSE 4.662 degC
+epoch  40  val MSE(z) 0.0303  RMSE 3.996 degC
+
+val RMSE: 3.762 degC | windows: 49180 train / 7280 val | train time 2218 s
+horizon rollout: twin 1.8 ms vs surrogate 0.17 ms -> speedup x11

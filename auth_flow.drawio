@@ -1,0 +1,116 @@
+<mxfile host="Electron">
+  <diagram id="auth_flow" name="Authentication Flow">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Lifeline: User -->
+        <mxCell id="user_head" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="User" vertex="1">
+          <mxGeometry height="500" width="100" x="80" y="40" as="geometry" />
+        </mxCell>
+        <!-- Lifeline: React Frontend -->
+        <mxCell id="frontend_head" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#d5e8d4;strokeColor=#82b366;" value="React Frontend" vertex="1">
+          <mxGeometry height="500" width="100" x="280" y="40" as="geometry" />
+        </mxCell>
+        <!-- Lifeline: Node.js Backend -->
+        <mxCell id="backend_head" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#ffe6cc;strokeColor=#d79b00;" value="Node.js Backend" vertex="1">
+          <mxGeometry height="500" width="100" x="480" y="40" as="geometry" />
+        </mxCell>
+        <!-- Lifeline: Postgres Database -->
+        <mxCell id="db_head" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#e1d5e7;strokeColor=#9673a6;" value="Postgres Database" vertex="1">
+          <mxGeometry height="500" width="100" x="680" y="40" as="geometry" />
+        </mxCell>
+
+        <!-- Message 1: User -> Frontend -->
+        <mxCell id="msg1" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="130" y="120" as="sourcePoint" />
+            <mxPoint x="330" y="120" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg1_label" parent="msg1" style="html=1;align=center;verticalAlign=bottom;spacingBottom=2;labelBackgroundColor=#ffffff;" value="Enter credentials" vertex="1" connectable="0">
+          <mxGeometry x="-0.2" y="0" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Message 2: Frontend -> Backend -->
+        <mxCell id="msg2" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="330" y="180" as="sourcePoint" />
+            <mxPoint x="530" y="180" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg2_label" parent="msg2" style="html=1;align=center;verticalAlign=bottom;spacingBottom=2;labelBackgroundColor=#ffffff;" value="POST /api/auth/login" vertex="1" connectable="0">
+          <mxGeometry x="-0.2" y="0" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Message 3: Backend -> DB -->
+        <mxCell id="msg3" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="530" y="240" as="sourcePoint" />
+            <mxPoint x="730" y="240" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg3_label" parent="msg3" style="html=1;align=center;verticalAlign=bottom;spacingBottom=2;labelBackgroundColor=#ffffff;" value="SELECT user WHERE email = ?" vertex="1" connectable="0">
+          <mxGeometry x="-0.2" y="0" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Message 4: DB -> Backend -->
+        <mxCell id="msg4" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="730" y="300" as="sourcePoint" />
+            <mxPoint x="530" y="300" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg4_label" parent="msg4" style="html=1;align=center;verticalAlign=bottom;spacingBottom=2;labelBackgroundColor=#ffffff;" value="Return hashed password" vertex="1" connectable="0">
+          <mxGeometry x="0.2" y="0" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Verify Hash Note -->
+        <mxCell id="note1" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#fff2cc;strokeColor=#d6b656;" value="Verify password hash" vertex="1">
+          <mxGeometry height="40" width="130" x="550" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="note1_link" edge="1" parent="1" source="note1" style="edgeStyle=none;html=1;dashed=1;endArrow=none;strokeWidth=1;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="530" y="340" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Message 5: Backend -> Frontend -->
+        <mxCell id="msg5" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="530" y="400" as="sourcePoint" />
+            <mxPoint x="330" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg5_label" parent="msg5" style="html=1;align=center;verticalAlign=bottom;spacingBottom=2;labelBackgroundColor=#ffffff;" value="200 OK (JWT token) / 401 Unauthorized" vertex="1" connectable="0">
+          <mxGeometry x="0.2" y="0" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Message 6: Frontend -> User -->
+        <mxCell id="msg6" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="330" y="460" as="sourcePoint" />
+            <mxPoint x="130" y="460" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg6_label" parent="msg6" style="html=1;align=center;verticalAlign=bottom;spacingBottom=2;labelBackgroundColor=#ffffff;" value="Redirect to Dashboard / Show error" vertex="1" connectable="0">
+          <mxGeometry x="0.2" y="0" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

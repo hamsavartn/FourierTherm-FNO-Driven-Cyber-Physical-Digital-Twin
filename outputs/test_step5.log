@@ -1,0 +1,91 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.0, pytest-9.1.1, pluggy-1.6.0 -- C:\Users\ASUS\Desktop\ML_Project\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\ASUS\Desktop\ML_Project
+plugins: anyio-4.15.1
+collecting ... collected 3 items
+
+tests/test_surrogate.py::test_surrogate_differentiates_alpha FAILED      [ 33%]
+tests/test_surrogate.py::test_at7_surrogate_faster_than_twin PASSED      [ 66%]
+tests/test_surrogate.py::test_guarded_hybrid_end_to_end FAILED           [100%]
+
+================================== FAILURES ===================================
+_____________________ test_surrogate_differentiates_alpha _____________________
+
+twin = <dtr.twin.rc_model.DigitalTwin object at 0x00000196D712BB60>
+model = {'model': FNO1d(
+  (lift): Linear(in_features=12, out_features=64, bias=True)
+  (specs): ModuleList(
+    (0-3): 4 x Sp...
+         [11.8720],
+         [10.3184],
+         [ 0.2567],
+         [ 0.0884]]]), 'y_mean': tensor([[65.2918]]), ...}
+
+    def test_surrogate_differentiates_alpha(twin, model):
+        """THE capability check: max-T prediction must INCREASE with alpha.
+        Uses a REALISTIC rolling context (dispatched history from an uncontrolled
+        warm-up) -- flat synthetic contexts are out-of-distribution by shape."""
+        day = make_synthetic_day(twin, n_stations=60, n_jobs=80, seed=3,
+                                 target_peak_T=96.0, start_hour=14)
+        warm = run_day(twin, day, "no_control")
+        x = warm["x_final"]
+        fn = lambda g: twin.kusuda_T_inf(g * 60.0)
+        # rolling realized history from the final hour of the warm-up
+        from dtr.control.allocator import desired_kw, phase_aggregate
+        pm = day.phase_map[day.jobs.station]
+        Ph = np.stack([day.baseload_phase[m]
+                       + phase_aggregate(desired_kw(day.jobs, m), pm)
+                       for m in range(1380, 1440)])
+        Th = np.array([fn(m) for m in range(1380, 1440)])
+        gh = GuardedHybrid(twin, day.phase_map, [model])
+        t0 = 14 * 60
+        mTs = {a: gh._surrogate_maxT(x, t0, a, day.jobs,
+                                     day.baseload_phase, fn, Ph, Th)[0]
+               for a in (0.2, 0.6, 1.0)}
+        assert mTs[1.0] > mTs[0.6] > mTs[0.2], f"no alpha response: {mTs}"
+>       assert mTs[1.0] - mTs[0.2] > 0.5   # meaningful dynamic range
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       assert (87.44486236572266 - 87.41087341308594) > 0.5
+
+tests\test_surrogate.py:67: AssertionError
+_______________________ test_guarded_hybrid_end_to_end ________________________
+
+twin = <dtr.twin.rc_model.DigitalTwin object at 0x00000196D712BB60>
+model = {'model': FNO1d(
+  (lift): Linear(in_features=12, out_features=64, bias=True)
+  (specs): ModuleList(
+    (0-3): 4 x Sp...
+         [11.8720],
+         [10.3184],
+         [ 0.2567],
+         [ 0.0884]]]), 'y_mean': tensor([[65.2918]]), ...}
+
+    def test_guarded_hybrid_end_to_end(twin, model):
+        day = make_synthetic_day(twin, n_stations=200, n_jobs=300, seed=0,
+                                 target_peak_T=100.0, start_hour=14, end_hour=24)
+        from dtr.baselines.static_cap import compute_static_cap_kw
+        p_static = compute_static_cap_kw(twin, float(day.baseload_phase.max()))
+        x0 = None
+        for _ in range(2):
+            x0 = run_day(twin, day, "static_cap", p_static_kw=p_static,
+                         t0_gmin=200 * 1440)["x_final"]
+        r = run_day(twin, day, "guarded_hybrid", p_static_kw=p_static, x0=x0,
+                    t0_gmin=200 * 1440, models=[model])
+        s = r["summary"]
+        assert s["violations"] == 0                          # G1 holds with surrogate in loop
+        assert np.all((r["logs"]["alpha"] >= 0.0)
+                      & (r["logs"]["alpha"] <= 1.0))         # AT-4 analogue
+        modes = s["modes"]
+        total = sum(modes.values())
+>       assert modes.get("surrogate_ok", 0) / total > 0.5    # surrogate actually used
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: assert (0 / 1440) > 0.5
+E        +  where 0 = <built-in method get of dict object at 0x00000196D8A90400>('surrogate_ok', 0)
+E        +    where <built-in method get of dict object at 0x00000196D8A90400> = {'fallback': 45, 'base_over': 27, 'recovered': 1368}.get
+
+tests\test_surrogate.py:101: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_surrogate.py::test_surrogate_differentiates_alpha - assert ...
+FAILED tests/test_surrogate.py::test_guarded_hybrid_end_to_end - AssertionErr...
+=================== 2 failed, 1 passed in 274.70s (0:04:34) ===================

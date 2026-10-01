@@ -1,0 +1,55 @@
+# Thermal digital twin parameters (PRD v3.6 §2) — representative starting values.
+# Every value marked "calibrate" must be re-sourced from the chosen 185 mm2
+# 6.35/11 kV 3-core XLPE datasheet before final runs (PRD §15 open items).
+
+electrical:
+  V_ll: 11000.0        # line-to-line voltage [V]
+  pf: 0.95             # power factor (representative)
+  R_ac: 2.11e-4        # AC resistance per core per metre [ohm/m]
+                       # (185 mm2 Al: 0.211 ohm/km AC at 90 C, from datasheet)
+  lam_zs: 1.03         # sheath/armour eddy loss factor on R_ac*sum(I^2)
+                       # (IEC 60287-style lambda under imbalance, v3.2)  calibrate
+
+core_thermal:          # three identical conductor nodes, star-coupled via filler (v3.6)
+  R_core: 2.10         # each core -> filler node [K.m/W]; = 3*R1 (R1 ~ 0.70) so the
+                       # balanced-load limit matches the classic single-node ladder  calibrate
+  C_core: 450.0        # each core heat capacity [J/(K.m)] (cable total ~1350;
+                       # Al 185 mm2: 185e-6 * 2700 * 900 = 449 J/K/m per core)  calibrate
+
+common_thermal:
+  R2: 0.20             # filler/bedding -> sheath [K.m/W]  calibrate
+  C_i: 1100.0          # insulation + filler heat capacity [J/(K.m)]  calibrate
+  R3: 0.15             # serving resistance [K.m/W]  calibrate
+  C_s: 2000.0          # sheath + serving heat capacity [J/(K.m)]  calibrate
+  C_x: 5.3e5           # near-soil annulus (~0.3 m radius) [J/(K.m)]  calibrate
+  R4_wet: 0.60         # external soil resistance at rho_wet [K.m/W]
+                       # (rho/(2*pi)*ln(2L/D), L = 0.8 m, D ~ 0.09 m)  calibrate
+
+soil:                  # two-zone dry-out with hysteresis (v3.2/v3.3/v3.5)
+  rho_wet: 1.0         # moist soil thermal resistivity [K.m/W]
+  rho_dry: 2.5         # dry soil resistivity [K.m/W]  calibrate
+  T_crit: 35.0         # drying onset temperature [degC]  calibrate
+  k_sig: 1.0           # sigmoid steepness [1/degC] (transition ~ +/-3 degC;
+                       # must stay well inside the safety margin). NOTE: the
+                       # sigmoid foot means slow drying stays ~5% active up to
+                       # ~3 degC BELOW T_crit -- pick T_crit accordingly when
+                       # calibrating (asserted by test_steady_state_consistency)
+  tau_dry: 21600.0     # drying time constant [s] (6 h)  calibrate
+  tau_wet: 432000.0    # re-wetting time constant [s] (120 h >= 10 x tau_dry)  calibrate
+
+dielectric:            # W_d = omega*C*U0^2*tan_delta(T), Van Wormer 50/50 split (v3.4/v3.6)
+  capacitance_per_m: 4.6e-10   # [F/m] (= 0.460 uF/km datasheet value for 185mm2 6.35/11kV)
+  U0: 6350.0           # phase-to-earth voltage [V]
+  tan_delta_20: 4.0e-4 # dissipation factor at 20 degC  calibrate
+  beta: 0.015          # exponential rise per degC  calibrate
+  freq: 50.0           # [Hz]
+
+boundary:              # Kusuda-Achenbach far-field T_inf (v3.2; NBS Report 8972)
+  T_mean: 20.0         # annual mean soil surface temperature [degC]  calibrate
+  T_amp: 12.0          # annual surface amplitude [degC]  calibrate
+  alpha_soil: 7.5e-7   # soil thermal diffusivity [m^2/s]
+  depth: 0.8           # burial depth to cable axis [m]
+  t_shift_days: 30.0   # day-of-year of minimum surface temperature  calibrate
+
+limits:
+  T_max: 90.0          # XLPE continuous conductor temperature limit [degC]

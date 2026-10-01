@@ -1,0 +1,28 @@
+﻿source_title,target_title,source_year,relation,source_id
+Fourier Neural Operator for Parametric Partial Differential Equations,Physics-informed neural networks: A deep learning framework for solving forward and inverse problems involving nonlinear partial differential equations,2020,cites,arXiv:2010.08895
+Physics Informed Neural Networks for Control Oriented Thermal Modeling of Buildings,Physics-informed neural networks: A deep learning framework for solving forward and inverse problems involving nonlinear partial differential equations,2021,cites,doi:10.1016/j.apenergy.2022.118852
+Physics-informed machine learning,Fourier Neural Operator for Parametric Partial Differential Equations,2021,cites,doi:10.1038/s42254-021-00314-5
+Physics-informed machine learning,Physics-informed neural networks: A deep learning framework for solving forward and inverse problems involving nonlinear partial differential equations,2021,cites,doi:10.1038/s42254-021-00314-5
+Learning Mesh-Based Simulation with Graph Networks,Low-Frequency Noise Parameter Extraction Method for Single-Layer Graphene FETs,2020,cites,doi:10.48550/arxiv.2010.03409
+An approach to thermal modeling of power cables installed in ducts,Enhanced Thermal Model of Power Cables Installed in Ducts for Ampacity Calculations,2023,cites,doi:10.1016/j.epsr.2022.108916
+Message Passing Neural PDE Solvers,Fourier Neural Operator for Parametric Partial Differential Equations,2022,cites,doi:10.48550/arxiv.2202.03376
+Thermal modelling and analysis of high‐voltage insulated power cables under transient loads,IEC 60287 (standard),2013,standard-cited,doi:10.1002/cae.20497
+Thermal modelling and analysis of high‐voltage insulated power cables under transient loads,IEC 60853 (standard),2013,standard-cited,doi:10.1002/cae.20497
+Optimization of Ampacity in High-Voltage Underground Cables with Thermal Backfill Using Dynamic PSO and Adaptive Strategies,IEC 60287 (standard),2024,standard-cited,doi:10.3390/en17051023
+Optimization of Ampacity in High-Voltage Underground Cables with Thermal Backfill Using Dynamic PSO and Adaptive Strategies,IEC 60853 (standard),2024,standard-cited,doi:10.3390/en17051023
+Transient Thermal Response of Power Cables With Temperature Dependent Losses,IEC 60287 (standard),2021,standard-cited,doi:10.1109/tpwrd.2020.3026779
+Transient Thermal Response of Power Cables With Temperature Dependent Losses,IEC 60853 (standard),2021,standard-cited,doi:10.1109/tpwrd.2020.3026779
+Concepts and Methods to Assess the Dynamic Thermal Rating of Underground Power Cables,IEC 60287 (standard),2021,standard-cited,doi:10.3390/en14092591
+Concepts and Methods to Assess the Dynamic Thermal Rating of Underground Power Cables,IEC 60853 (standard),2021,standard-cited,doi:10.3390/en14092591
+Dynamic temperature estimation and real time emergency rating of transmission cables,IEC 60287 (standard),2012,standard-cited,doi:10.1109/pesgm.2012.6345324
+Dynamic temperature estimation and real time emergency rating of transmission cables,IEC 60853 (standard),2012,standard-cited,doi:10.1109/pesgm.2012.6345324
+An approach to thermal modeling of power cables installed in ducts,IEC 60287 (standard),2023,standard-cited,doi:10.1016/j.epsr.2022.108916
+Probabilistic Dynamic Line Rating with Line Graph Convolutional LSTM,IEC 60853 (standard),2025,standard-cited,doi:10.48550/arxiv.2512.04369
+Enhanced Thermal Model of Power Cables Installed in Ducts for Ampacity Calculations,IEC 60287 (standard),2018,standard-cited,doi:10.1109/tpwrd.2018.2841054
+Physics-informed machine learning,Physics Informed Neural Networks for Control Oriented Thermal Modeling of Buildings,2021,co-cited-by-theme,doi:10.1038/s42254-021-00314-5
+Message Passing Neural PDE Solvers,Physics-informed neural networks: A deep learning framework for solving forward and inverse problems involving nonlinear partial differential equations,2022,co-cited-by-theme,doi:10.48550/arxiv.2202.03376
+Message Passing Neural PDE Solvers,Physics-informed machine learning,2022,co-cited-by-theme,doi:10.48550/arxiv.2202.03376
+Learning Mesh-Based Simulation with Graph Networks,Physics-informed neural networks: A deep learning framework for solving forward and inverse problems involving nonlinear partial differential equations,2020,co-cited-by-theme,doi:10.48550/arxiv.2010.03409
+Low-Frequency Noise Parameter Extraction Method for Single-Layer Graphene FETs,Physics-informed neural networks: A deep learning framework for solving forward and inverse problems involving nonlinear partial differential equations,2020,co-cited-by-theme,doi:10.1109/ted.2020.2978215
+Concepts and Methods to Assess the Dynamic Thermal Rating of Underground Power Cables,Optimization of Ampacity in High-Voltage Underground Cables with Thermal Backfill Using Dynamic PSO and Adaptive Strategies,2021,co-cited-by-theme,doi:10.3390/en14092591
+Dynamic temperature estimation and real time emergency rating of transmission cables,Thermal modelling and analysis of high‐voltage insulated power cables under transient loads,2012,co-cited-by-theme,doi:10.1109/pesgm.2012.6345324
